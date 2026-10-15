@@ -156,9 +156,10 @@ python examples/bench.py edge0-8b     # via $EDGE0_8B_MODEL
 - **Memory**: ~2.9 GB **MLX allocator** peak for `edge0-35b`, ~1.0 GB for
   `edge0-8b` (short contexts; see [Benchmark](#benchmark)). That figure is
   `mlx.core.get_peak_memory()`, not process RSS — file-backed expert pages,
-  the MLX buffer cache, tokenizer, and interpreter are extra. The paper
-  reports process footprints roughly 2× the allocator peak on a 16 GB M2.
-  Add headroom for the OS, tokenizer, and long-context KV growth.
+  the MLX buffer cache, tokenizer, and interpreter are extra, but that
+  extra RSS is reclaimable and does not set the machine requirement (the
+  same build runs on a 16 GB M2). Add headroom for the OS, tokenizer, and
+  long-context KV growth.
 - **Disk**: the 4-bit checkpoints are ~23 GB (`edge0-35b`) and ~4.2 GB
   (`edge0-8b`); expert weights are mmapped and read on demand, they are
   not loaded into RAM up front.

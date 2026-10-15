@@ -3,8 +3,9 @@
 
 Runs the same measurement shape as the deployment's bench: prefill ->
 sampled warmup steps -> timed sampled decode -> report tok/s and MLX
-MLX allocator peak memory (`mlx.core.get_peak_memory`).  Works for both tiers; the tier is auto-detected
-from the checkpoint (or forced via the model name).
+allocator peak memory (`mlx.core.get_peak_memory`).  Works for both
+tiers; the tier is auto-detected from the checkpoint (or forced via the
+model name).
 
 Usage:
     python examples/bench.py /path/to/model [--ntok 200] [--warmup 10]
