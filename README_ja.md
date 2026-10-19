@@ -14,6 +14,7 @@
 [![ModelScope](https://img.shields.io/badge/ModelScope-Edge0--8B--A1B--preview-624AFF?style=for-the-badge)](https://www.modelscope.cn/models/Edge0/Edge0-8B-A1B-preview)
 [![arXiv](https://img.shields.io/badge/arXiv-2609.18063-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2609.18063)
 [![GitHub](https://img.shields.io/badge/GitHub-Edge0--AI%2FEdge0-black?style=for-the-badge&logo=github)](https://github.com/Edge0-AI/Edge0)
+[![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://edge0.ai/discord)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 [English](README.md) | [中文](README_zh.md) | 日本語 | [Español](README_es.md) | [Français](README_fr.md)
@@ -290,8 +291,7 @@ edge0 が役に立った場合は、私たちの技術レポートを引用し�
 
 ## お問い合わせ
 
-コミュニティとサポートのチャネルは近日公開予定です — このセクションに、私たちへの公式の連絡方法を掲載します:
-
+- **Discord**: [edge0.ai/discord](https://edge0.ai/discord) — コミュニティのチャットとサポート
 - **メール**: samuel@edge0.ai
 
 バグと機能リクエストには、[GitHub Issues](https://github.com/Edge0-AI/Edge0/issues) をご利用ください。
