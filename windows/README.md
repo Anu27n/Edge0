@@ -146,9 +146,9 @@ JSON line for aggregation, and `benchmarks/r3/bench_<tier>_submission.json`
 stores the per-rep detail.
 
 On the memory field: `peak_active_gib` on Windows is the engine process's
-peak working set during the timed reps (OS-level high-water mark) — the same
-intent as the Python bench's `mlx.core.get_peak_memory()`, measured at the
-process level instead of the allocator.
+peak working set during the timed reps (OS-level high-water mark). Windows
+has no allocator-level counter, so this is not directly comparable with the
+python-mlx column's `mlx.core.get_peak_memory()`.
 
 ---
 

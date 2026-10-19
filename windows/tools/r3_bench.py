@@ -140,15 +140,17 @@ def engine_commit():
 
 
 def vulkan_device(err):
-    """Vulkan device name reported by the engine's own startup log."""
-    m = re.search(r"Device\s*\d*\s*[:=]\s*(.+?)\s*(?:\(|\n|$)", err, re.I)
-    if m and re.search(r"vulkan", err[:m.start()][-400:], re.I):
-        return m.group(1).strip()
+    """Vulkan device name from the engine's own startup log, e.g:
+    'ggml_vulkan: 0 = AMD Radeon RX 9070 GRE (vendor) | uma: ...'."""
     for line in err.splitlines():
-        if re.search(r"vulkan", line, re.I):
-            m2 = re.search(r"(?:device|adapter|gpu)[^\n:]*[:=]\s*(.+)", line, re.I)
-            if m2:
-                return m2.group(1).strip()
+        if not re.search(r"vulkan", line, re.I):
+            continue
+        m = re.search(r"\d+\s*=\s*([^\n|()]+)", line)
+        if m:
+            return m.group(1).strip()
+        m = re.search(r"Device\s*\d*\s*[:=]\s*([^\n|(),]+)", line, re.I)
+        if m:
+            return m.group(1).strip()
     return None
 
 
