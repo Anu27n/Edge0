@@ -14,6 +14,7 @@
 [![ModelScope](https://img.shields.io/badge/ModelScope-Edge0--8B--A1B--preview-624AFF?style=for-the-badge)](https://www.modelscope.cn/models/Edge0/Edge0-8B-A1B-preview)
 [![arXiv](https://img.shields.io/badge/arXiv-2609.18063-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2609.18063)
 [![GitHub](https://img.shields.io/badge/GitHub-Edge0--AI%2FEdge0-black?style=for-the-badge&logo=github)](https://github.com/Edge0-AI/Edge0)
+[![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://edge0.ai/discord)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 [English](README.md) | 中文 | [日本語](README_ja.md) | [Español](README_es.md) | [Français](README_fr.md)
@@ -365,8 +366,7 @@ examples/demo.py              # 最小 API walkthrough（edge0 demo 的等价代
 
 ## 联系我们
 
-社区与支持渠道即将上线，本节将列出联系我们的官方方式：
-
+- **Discord**：[edge0.ai/discord](https://edge0.ai/discord) — 社区交流与支持
 - **邮箱**：samuel@edge0.ai
 
 Bug 与功能建议请直接提
