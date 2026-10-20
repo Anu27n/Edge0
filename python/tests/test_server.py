@@ -202,6 +202,14 @@ def test_parse_stream_flag_and_sampling():
     assert req.stream is True
 
 
+def test_parse_max_completion_tokens():
+    # The current OpenAI name for the limit; it wins over the deprecated
+    # ``max_tokens`` when a client sends both.
+    assert _req(max_completion_tokens=24).max_tokens == 24
+    assert _req(max_completion_tokens=24, max_tokens=16).max_tokens == 24
+    assert _req(max_completion_tokens=None, max_tokens=16).max_tokens == 16
+
+
 def test_parse_preserves_tools_and_tool_choice():
     req = _req(tools=_TOOLS, tool_choice="auto")
     assert req.tools == _TOOLS
