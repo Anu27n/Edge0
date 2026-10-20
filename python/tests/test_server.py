@@ -912,3 +912,30 @@ def test_chat_stream_incremental_decode_of_split_characters():
     non_streamed = decode_tokens(eng, ids)
     assert streamed == non_streamed == trigger
     assert "\ufffd" not in streamed
+
+
+class _CutTok(FakeTok):
+    """Decodes like a byte-level tokenizer whose generation stopped in the
+    middle of a multi-byte character (e.g. at max_tokens): the last id
+    leaves an incomplete sequence that decodes to U+FFFD."""
+
+    _PIECES = {11: "ok ", 12: "fine", 13: "\ufffd"}
+
+    def decode(self, tokens):
+        return "".join(self._PIECES.get(t, "") for t in tokens)
+
+
+def test_chat_stream_flushes_trailing_replacement_char_at_end():
+    """Concatenated deltas must equal the non-streaming text even when the
+    generation ends on an incomplete character, which no later id can
+    complete."""
+    eng = FakeEngine(tok=_CutTok())
+    srv = QueueServer(eng, model_name="fake")
+    body = b"".join(_chat_stream(srv, {
+        "messages": [{"role": "user", "content": "hi"}], "stream": True,
+    }))
+    chunks = [json.loads(e[6:]) for e in body.decode("utf-8").split("\n\n")
+              if e and e != "data: [DONE]"]
+    streamed = "".join(c["choices"][0]["delta"].get("content") or ""
+                       for c in chunks)
+    assert streamed == decode_tokens(eng, [11, 12, 13]) == "ok fine\ufffd"
